@@ -4,6 +4,8 @@ Office and apartment brokerage
 # Phân tích trang Môi giới văn phòng và căn hộ cho thuê
 ## _side project_
 
+[![Sơ đồ thực thể](https://app.diagrams.net/images/favicon-32x32.png)](https://drive.google.com/file/d/1kqvfBiOAJcUsFEuS5H7oYJwmLDq9SBKl/view?usp=sharing)
+
 ### Đối tượng sử dụng
 - Quản trị viên
 - Chủ nhà
