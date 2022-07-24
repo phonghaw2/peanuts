@@ -1,5 +1,5 @@
 # peanuts
-Office and apartment brokerage
+Real estate broker (apartment & office for lease )
 
 # Phân tích trang Môi giới văn phòng và căn hộ cho thuê
 ## _side project_
