@@ -36,7 +36,7 @@ C.Khách hàng
 | ------ | ------ |
 | MÔ TẢ | Đăng bài |  
 | Kích hoạt | Người dùng ấn vào nút "Đăng bài tuyển dụng" trên menu |  
-| Đầu vào |Tiêu đề<br>Tên công việc<br>Địa điểm: thành phố - quận (select2 - load về local)<br>Diện tích<br>Thông tin liên hệNgày đăng,ngày hết hạng<br>Mức giá (slidebar)<br>Ngôn ngữ (multiple select2)<br>Mô tả (textarea)<br>Thời gian<br>Số lượng<br>File JD |    
+| Đầu vào |Tiêu đề<br>Tên công việc<br>Địa điểm: thành phố - quận (select2 - load về local)<br>Diện tích<br>Thông tin liên hệ<br>Ngày đăng,ngày hết hạng<br>Mức giá (slidebar)<br>Ngôn ngữ (multiple select2)<br>Mô tả (textarea)<br> |    
 | Trình tự xử lý | |
 | Đầu ra | Đúng: Hiển thị trang người dùng và thông báo thành công<br>Sai: Hiển thị trang đăng nhập và thông báo thất bại |
 | Lưu ý | Kiểm tra ô nhập không được để trống bằng JavaScript |
