@@ -1,0 +1,375 @@
+@media (min-width: 576px){
+    .section-card {
+        max-width: 540px;
+    }
+
+}
+
+
+@media only screen and (min-width: 600px){
+    .cd-user-modal-container {
+        margin: 4em auto;
+    }
+}
+
+
+@media (min-width: 680px){
+    .content-container {
+        max-width: 1920px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    main {
+        padding-bottom: 25px;
+    }
+    .card {
+        border-radius: 4px;
+    }
+    .card-left {
+        overflow: hidden;
+    }
+    .card-right {
+        display: flex;
+    }
+    .card-info{
+        -webkit-flex: 1 1;
+        flex: 1 1;
+        margin-right: 32px;
+    }
+    .introduce {
+        max-width: 1920px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    ._1xNUY {
+        margin-left: -13px;
+        margin-right: -13px;
+    }
+    .introduce-item {
+        width: 50%;
+        flex: 0 0 auto;
+    }
+    .about-we {
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+        margin-left: 8.333333%;
+        width: 83.333333%;
+    }
+
+}
+
+
+@media (min-width: 680px) and (max-width: 1019.98px){
+    ._1xNUY {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    ._1xNUY>* {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .select-tore-title {
+        font-size: 34px;
+        line-height: 46px;
+    }
+
+}
+@media (min-width: 768px){
+    .section-card {
+        max-width: 720px;
+    }
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+    .grid-card{
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+@media (min-width: 992px){
+    .section-card {
+        max-width: 960px;
+    }
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+}
+
+
+@media (min-width: 1020px){
+    .content-container {
+        padding-top: 14px;
+    }
+    main {
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 66.666667%;
+    }
+    #sub {
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 33.333333%;
+    }
+    .card-description {
+        margin-bottom: 23px;
+    }
+    .introduce {
+        margin-bottom: 60px;
+        padding-top: 103px;
+    }
+    .introduce-item {
+        margin-bottom: 40px;
+    }
+    .introduce-item-title {
+        font-size: 18px;
+    }
+    .introduce-item-content {
+        margin-top: 10px;
+    }
+    .about-title {
+        align-items: center;
+        display: flex;
+        font-size: 42px;
+        line-height: 64px;
+        width: 41.666667%;
+        flex: 0 0 auto;
+    }
+    .about-content {
+        width: 58.333333%;
+        flex: 0 0 auto;
+    }
+    .about-we {
+        margin-left: 0;
+    }
+    .select-tore-title {
+        font-size: 60px;
+        line-height: 80px;
+    }
+
+}
+
+@media (min-width: 1280px){
+    .content {
+        margin-left: -19px;
+        margin-right: -19px;
+    }
+    main {
+        width: 75%;
+        flex: 0 0 auto;
+
+    }
+    main>* {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+    .section-card {
+        max-width: 1140px;
+    }
+    #sub {
+        width: 25%;
+        flex: 0 0 auto;
+    }
+    .card {
+        display: -webkit-flex;
+        display: flex;
+    }
+    .card-left {
+        border-radius: 4px 0 0 4px;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        min-height: 400px;
+    }
+    .card-right {
+        flex: 1 1;
+    }
+    .card-info{
+        margin-right: 27px;
+        padding-left: 10px!important;
+    }
+    .card-title {
+        min-height: 44px;
+    }
+    .item.login span{
+        display: inline-block !important;
+    }
+    .about-title {
+        font-size: 42px;
+        line-height: 64px;
+        width: 33.333333%;
+    }
+    .about-we {
+        margin-left: 8.333333%;
+        flex: 0 0 auto;
+    }
+    .about-content {
+        width: 41.666667%;
+    }
+    ._1xNUY {
+        margin-left: -19px;
+        margin-right: -19px;
+    }
+    ._1xNUY>* {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+
+}
+@media (max-width: 1280px){
+    #sub{
+        display: none;
+    }
+    main{
+        width: 100% !important;
+    }
+
+}
+
+@media (min-width: 1400px){
+    .section-card {
+        max-width: 1320px;
+    }
+}
+
+
+@media (min-width: 1600px){
+    .card-left {
+        width: 54%;
+    }
+    .card-right {
+        margin: 22px 21px 32px 33px;
+        padding-bottom: 55px;
+        position: relative;
+    }
+    .card-info{
+        padding-top: 10px;
+    }
+}
+
+
+
+.card-description {
+    font-size: 12px;
+    letter-spacing: .14px;
+    line-height: 20px;
+}
+
+
+
+@media (max-width: 1019.98px){
+    .introduce-item {
+        margin-bottom: 20px;
+    }
+    .input-filter {
+        padding: 8px 10px!important;
+        padding-bottom: 5px!important;
+
+    }
+    .input--style-1 {
+        font-size: 14px!important;
+        padding: 7px 0!important;
+    }
+
+}
+
+@media (min-width: 1020px) and (max-width: 1279.98px){
+    ._1xNUY>* {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
+
+
+
+
+@media screen and (min-width: 43.81em){
+    .udlite-footer .links-and-language-selector {
+        display: flex;
+    }
+    .udlite-footer .language-selector-container {
+        padding: 0 0 2.4rem;
+        order: 1;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    .udlite-footer .link-column {
+        flex-basis: 25.6rem;
+        margin-right: 1.6rem;
+        margin-bottom: 0;
+    }
+    .udlite-footer .logo-and-copyright {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6.4rem 0 3.2rem;
+    }
+}
+
+
+
+@media screen and (max-width:991px){
+    .price-box {
+      padding: 0px 10px;
+    }
+}
+@media screen and (max-width:767px){
+
+.price-box {
+    padding: 0px 35px;
+    margin-bottom: 50px;
+  }
+
+}
+@media screen and (max-width:480px){
+    .price-box {
+      padding: 0px 20px;
+    }
+}
+@media screen and (max-width:480px){
+
+.price-box__title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  .price-box__img {
+    width: 100px;
+    height: 100px;
+  }
+  .price-box__wrap {
+    padding: 20px 20px 30px 20px;
+  }
+  .price-box__people {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .price-box__discount {
+    font-size: 22px;
+  }
+  .price-box__price {
+    font-size: 12px;
+  }
+  .price-box__feat {
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  .price-box__list-el {
+    font-size: 12px;
+    margin-bottom: 5px;
+    }
+    .btn--width {
+        width: 100px;
+    }
+}
+
+
+.grid-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+

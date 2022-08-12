@@ -1,0 +1,14 @@
+.select-filter{
+    min-width: 120px !important;
+}
+.disabled{
+    pointer-events: none;
+}
+
+.error{
+    color: #dc3545;
+}
+#price-error , #area-error{
+    position: absolute!important;
+    padding: 8px!important;
+}
