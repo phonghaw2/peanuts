@@ -3,6 +3,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 @section('content')
+@include('layouts.slide')
     <div class="content-container">
 
         <div class="post-container">

@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('content')
+@include('layouts.slide')
 
-@if (session('success'))
-    <h1>hhohoho</h1>
-@endif
 
     <div class="content-container">
 
@@ -96,7 +94,7 @@
 @if (auth()->check() && auth()->user()->role === 1)
     @push('js-front')
 
-            <Script>
+            <script>
                 $(document).ready(function () {
                     $('#posting-btn').click(function () {
                         event.preventDefault();
@@ -104,7 +102,7 @@
                     });
                 });
 
-            </Script>
+            </script>
     @endpush
 @endif
 
@@ -114,8 +112,8 @@
 @if (!auth()->check())
     @push('js-front')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.js"></script>
-    <Script>
-        $(document).ready(async function () {
+    <script>
+        $(document).ready( function () {
             $('#posting-btn').click(function () {
                 event.preventDefault();
                 $(".box-lightbox").addClass("open");
@@ -127,27 +125,26 @@
             });
         });
 
-    </Script>
+    </script>
     @endpush
 @endif
 
 
 
-@if (session('success'))
+@if (session('fail'))
     @push('js-front')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.js"></script>
-        <Script>
+        <script>
             $(document).ready( function () {
                 $(".box-lightbox").addClass("open");
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Registration Success. Please login!',
-                    showConfirmButton: false,
-                    timer: 2500,
-                });
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "saaaui",
+                })
             });
 
-        </Script>
+        </script>
     @endpush
 
 @endif

@@ -16,7 +16,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        try {
             $request->validate([
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
@@ -35,15 +34,14 @@ class AuthController extends Controller
             //     'email' => $request->email,
             //     'password' => Hash::make($request->password),
             // ]);
-            $request->session()->put('success' ,'Please Login!');
-            return redirect('/')->with('success','Please Login!');
-        } catch (\Throwable $e) {
-            return $this->errorResponse($e->getMessage());
-        }
+            Auth::login($user);
+            return $this->successResponse();
+
+            // return redirect()->to('/')->with('message', 'Thank you for updating your billing information.');
     }
     public function login(Request $request)
     {
-        try {
+
             $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
@@ -60,16 +58,13 @@ class AuthController extends Controller
                     // ];
                     // $request->session()->put('loginID' , $sessionArray);
                     auth()->login($user, true);
-                    return redirect()->route('home');
+                    return $this->successResponse();
                 } else {
-                    return redirect()->route('home')->with('fail','password not match');
+                    return $this->errorResponse('password not match');
                 }
             }else {
                 return redirect()->route('home')->with('fail', 'This email is not registered');
             }
-        } catch (\Throwable $e) {
-            return $this->errorResponse($e->getMessage());
-        }
 
 
     }

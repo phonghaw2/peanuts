@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid p-0">
-    <h1 class="h3 mb-3">User</h1>
+    <h1 class="h3 mb-3">Posts</h1>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -21,7 +21,7 @@
                             <label for="type">Type</label>
                             <div class="col-3">
                                 <select class="form-control select-filter" name="type" id="type">
-                                    <option selected>All</option>
+                                    <option selected value="0">All</option>
                                     @foreach ($types as $type => $value)
                                         <option value="{{ $value }}"
                                         @if ((string)$value == $selectedType)
@@ -37,7 +37,7 @@
                             <label for="role">Tore</label>
                             <div class="col-3">
                                 <select class="form-control select-filter" name="tore" id="tore">
-                                    <option selected>All</option>
+                                    <option value="0" selected >All</option>
                                     @foreach ($tores as $tore => $value)
                                         <option value="{{ $value }}"
                                         @if ((string)$value == $selectedTore)
@@ -62,8 +62,8 @@
                                     <th>Title</th>
                                     <th>Location</th>
                                     <th>Info</th>
-                                    <th>TORE</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                     <th>Created at</th>
                                 </tr>
                             </thead>
@@ -83,10 +83,12 @@
         </div>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.js"></script>
+@include('admin.posts.modal')
+
 
 @endsection
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
     <script>
 
@@ -96,11 +98,15 @@
             $.ajax({
                 async: false,
                 url: "{{ route('api.posts') }}",
-                data: {page: {{ request()->get('page') ?? 1  }} },
+                data: {
+                    page: {{ request()->get('page') ?? 1  }} ,
+                    type: {{ request()->get('type') ?? 0  }},
+                    tore: {{ request()->get('tore') ?? 0  }},
+                },
                 dataType: 'json',
                 success: function (response) {
                     response.data.data.forEach(function (each){
-                        let info = each.price + '</br>' + each.mobile_phone  + '</br>' + each.office_phone ;
+                        let info = each.tore + '</br>' + each.mobile_phone  + '</br>' + each.office_phone ;
                         let location = each.district + '-' + each.city ;
                         let created_at = GetNow(each.created_at);
                         $('#table-data').append($('<tr>')
@@ -109,8 +115,8 @@
                             .append($('<td>').append(each.title))
                             .append($('<td>').append(location))
                             .append($('<td>').append(info))
-                            .append($('<td>').append(each.tore))
                             .append($('<td>').append(each.status))
+                            .append($('<td>').append("<a target='_blank' class='btn btn-success show-btn' data-id='" + each.id + "'><i class='bx bx-detail'></i>View</a>"))
                             .append($('<td>').append(created_at))
                         )
                     });
@@ -168,7 +174,64 @@
                     }
                 });
             });
+            $('.show-btn').click(function () {
+                let id = $(this).data('id');
+                GetDataByID(id);
+                $(".box-lightbox").addClass("open");
+                $("#cd-show").addClass("active");
+
+            });
+            $(".js-lightbox-close").click(function(){
+                $(".box-lightbox").removeClass("open");
+            });
+            $(".select-filter").change(function(){
+                $("#form-filter").submit();
+            });
         })
+        function GetDataByID(id) {
+            $.ajax({
+                async: false,
+                url: "{{ route('api.show') }}",
+                data: {id:id},
+                dataType: 'json',
+                success: function (response) {
+                    $('#show-title').text(response.data.title);
+                    $('#show-address').text(response.data.address);
+                    $('#show-price').text(response.data.price);
+                    $('#show-mobile-phone').text(response.data.mobile_phone);
+                    $('#show-description').html(response.data.description);
+                    $('#show-area').html(response.data.area + ' sqm');
+                    $('#show-from').text(response.data.price + ' m/Month');
+                    $('#show-bedroom').html(response.data.bedroom + ' rooms');
+                    $('#show-wc').text(response.data.wc);
+                    $('#show-start_date').text(response.data.start_date);
+                    $('#show-end_date').text(response.data.end_date);
+                    if(response.data.tore === 1){
+                        $('#bedroom-wc').addClass('d-none');
+                    }
+                }
+
+            });
+            $('#updateStatus').click(function () {
+
+                    $.ajax({
+                        async: false,
+                        url: "{{ route('admin.posts.updateStatus') }}",
+                        data: {id:id},
+                        success: function (response) {
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'Approved content',
+                            confirmButtonText: 'OK',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.location.reload(true);
+                                };
+                            });
+                        }
+                    });
+                });
+        };
 
     </script>
 @endpush

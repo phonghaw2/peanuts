@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PostStatusEnum;
 use App\Enums\PostToreEnum;
 use App\Enums\PostTypeEnum;
 use App\Http\Controllers\Controller;
@@ -39,11 +40,14 @@ class PostController extends Controller
         $selectedType = $request->get('type');
         $selectedTore = $request->get('tore');
 
+
         return view('admin.posts.index',[
             'selectedType' => $selectedType,
             'selectedTore' => $selectedTore,
         ]);
     }
+
+
     public function create()
     {
         return view('admin.posts.create');
@@ -65,7 +69,7 @@ class PostController extends Controller
     {
         try {
             Post::create($request->validated());
-            
+
             return $this->successResponse(message:'Successfully Posted');
 
 
@@ -74,5 +78,54 @@ class PostController extends Controller
         }
 
 
+    }
+
+    public function updateStatus(Request $request)
+    {
+        Post::where('id', $request->id)
+            ->update([
+                'status' => PostStatusEnum::APPROVE,
+            ]);
+        return $this->successResponse();
+    }
+
+
+    public function show($postId)
+    {
+        $post = $this->model
+                ->findOrFail($postId);
+        return view('admin.posts.show',[
+            'post' => $post,
+        ]);
+    }
+
+
+    public function check(request $request)
+    {
+        $selectedType = $request->get('type');
+        $selectedTore = $request->get('tore');
+
+        $query = $this->model->clone()
+            ->where('status', '0')
+            ->latest()  ;
+        if (!empty($selectedTore) && $selectedTore !== '0' ) {
+            $query->where('tore', $selectedTore);
+        }
+        if (!empty($selectedType) && $selectedType !== '0') {
+            $query->where('type', $selectedType);
+        }
+        $data = $query->paginate(10)
+            ->appends([
+                'tore' => $selectedTore,
+                'type' => $selectedType,
+            ]);
+
+
+
+        return View('admin.posts.check', [
+            'data' => $data,
+            'selectedTore' => $selectedTore,
+            'selectedType' => $selectedType,
+        ]);
     }
 }

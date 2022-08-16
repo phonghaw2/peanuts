@@ -1,5 +1,7 @@
 :root{
     --main-color: #1f1c2e;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
 }
 @font-face {
     font-family: Poppins;

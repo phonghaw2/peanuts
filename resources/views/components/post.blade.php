@@ -8,16 +8,16 @@
             </svg>
         </button>
         <div class="card-img">
-            <a href="#" class="card-img-link">
+            <a href="{{ route('officeshow', $post) }}" class="card-img-link">
                 <img class="img-home" src="https://content.instantoffices.com/Prod/images/centres/original/41710/41710-385509.jpg" alt="">
             </a>
         </div>
     </div>
     <div class="card-right col-md-6">
         <div class="card-info">
-            <a class="card-title px-3 my-3"  href="#"> {{ $title }}</a>
+            <a class="card-title px-3 my-3"  href="#"> {{ $post->title }}</a>
             <div class="card-description px-3">
-                {{ $description }}
+                {{ $post->description }}
             </div>
             <div class="card-wc-room-area px-3">
                 <div class="rh_prop_card__meta_wrap">
@@ -41,7 +41,7 @@
                                 <path opacity="0.5" d="M23,20.277V1h-2v19.277C20.7,20.452,20.452,20.7,20.277,21H1v2h19.277c0.347,0.596,0.984,1,1.723,1
                                     c1.104,0,2-0.896,2-2C24,21.262,23.596,20.624,23,20.277z"></path>
                             </svg>
-                            <span class="figure">{{ $area }}</span>
+                            <span class="figure">{{ $post->area }}</span>
                             <span class="label">sqm</span>
                         </div>
                     </div>
@@ -51,13 +51,13 @@
             </div>
             <div class="card-tag-location d-flex px-3 my-3">
                 <i class="fa-solid fa-location-dot"></i>
-                <a  href="#"> {{ $district }}</a>
+                <a  href="#"> {{ $post->district }}</a>
                 <i class="fa-solid fa-circle" style="font-size: 1.2rem!important"></i>
-                <a  href="#"> {{ $city }}</a>
+                <a  href="#"> {{ $post->city }}</a>
             </div>
             <div class="card-tag-price  mb-3">
                 <span class="rh_prop_card__status"> For Rent</span>
-                <p class="rh_prop_card__price">$ {{ $price }} /sqm/month</p>
+                <p class="rh_prop_card__price">$ {{ $post->price }} /sqm/month</p>
             </div>
         </div>
     </div>

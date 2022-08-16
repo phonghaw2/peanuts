@@ -9,7 +9,7 @@
     </div>
     <ul id="sidebar_menu" class="metismenu">
         <li class="sidebar_menu_li" >
-            <a class="has-arrow" href="#" aria-expanded="true">
+            <a class="has-arrow" href="{{ route('admin.dashboard') }}" aria-expanded="true">
                 <div class="icon_menu">
                     <img src="img/menu-icon/dashboard.svg" alt="">
                 </div>
@@ -45,7 +45,7 @@
         <li class="sidebar_menu_li">
             <a href="{{ route('admin.signup') }}" aria-expanded="false">
                 <div class="icon_menu">
-                    <i class='bx bx-news' ></i>
+                    <i class='bx bxs-user-account'></i>
                 </div>
                 <span>Sign up <br> (for admin)</span>
             </a>
@@ -53,9 +53,17 @@
         <li class="sidebar_menu_li">
             <a href="{{ route('admin.logout') }}" aria-expanded="false">
                 <div class="icon_menu">
-                    <i class='bx bx-news' ></i>
+                    <i class='bx bx-door-open' ></i>
                 </div>
                 <span>Log out</span>
+            </a>
+        </li>
+        <li class="sidebar_menu_li">
+            <a href="{{ route('admin.password') }}" aria-expanded="false">
+                <div class="icon_menu">
+                    <i class='bx bx-door-open' ></i>
+                </div>
+                <span>Change Password</span>
             </a>
         </li>
 

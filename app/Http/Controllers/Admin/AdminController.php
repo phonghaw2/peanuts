@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ResponseTrait;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -16,22 +17,36 @@ class AdminController extends Controller
 
 
     public function test(){
-        $hashed = '$10$Nvhh2PQ4Lb5rbatniKzDqeC/mdwdCZNG/6FT584ivaxEqtmyOs1.W';
-        if (Hash::needsRehash($hashed)) {
-            $hashed = Hash::make('Helenkyler123@');
-        }
-        dd($hashed);
+        return View('admin.posts.modal');
     }
+
+
+
     public function index(){
         return View('admin.login');
     }
 
-    public function dashboard(){
-        return View('layout-backside.master');
+
+    public function dashboard()
+    {
+        $countPosts = DB::table('posts')
+                ->select(DB::raw('count(*) as count_posts'))
+                ->where('status', '0')
+                ->first();
+        $countUsers = DB::table('users')
+                ->select(DB::raw('count(*) as count_users'))
+                ->addSelect(DB::raw('count(case when role = 2 then 1 end) as count_hosts' ))
+                ->first();
+        return View('admin.dashboard',[
+            'countPosts' => $countPosts,
+            'countUsers' => $countUsers,
+        ]);
     }
+
     public function signup(){
         return View('admin.signup');
     }
+
     public function register(request $request)
     {
         try {
@@ -87,11 +102,10 @@ class AdminController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if ($user) {
-            if (Hash::check($request->password, $user->password)) {
+            if (Hash::check($request->password, $user->password) && $user->role == UserRoleEnum::ADMIN) {
                 auth()->login($user, true);
                 return redirect()->route('admin.dashboard');
             } else {
-                dd(Hash::make($request->password));
                 return redirect()->route('admin.index')->with('fail', 'password not match');
             }
         }else {
@@ -107,5 +121,38 @@ class AdminController extends Controller
 
         $request->session()->invalidate();
         return redirect()->route('admin.index');
+    }
+    public function password()
+    {
+        return View('admin.password');
+    }
+    public function passwordProcessed(Request $request)
+    {
+        try {
+
+            $request->validate([
+                'old_password' => [
+                    'required',
+                    'current_password',
+                ],
+                'new_password' => [
+                    'required',
+                    'confirmed',
+                ],
+            ]);
+
+           $user = User::find(Auth::id());
+           $user->password = Hash::make($request->new_password);
+           $user->save();
+           $request->session()->regenerate();
+
+
+            return $this->successResponse(message:'Your Password has been changed');
+
+
+        } catch (\Throwable $e) {
+            return $this->errorResponse($e->getMessage());
+        }
+
     }
 }

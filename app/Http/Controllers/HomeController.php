@@ -123,6 +123,15 @@ class HomeController extends Controller
         ]); //append them cai filter nua~
 
     }
+    public function show($postId)
+    {
+        $post = $this->model
+                ->findOrFail($postId);
+        return view('show',[
+            'post' => $post,
+        ]);
+
+    }
     public function test()
     {
 

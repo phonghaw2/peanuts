@@ -1843,3 +1843,54 @@ input[type="file"]{
     cursor: pointer;
 }
 
+
+/* post info */
+
+.shadow-blur {
+    box-shadow: inset 0 0 1px 1px hsla(0,0%,100%,.9),0 20px 27px 0 rgba(0,0,0,.05)!important;
+}
+.w-80 {
+    width: 80%!important;
+}
+.border-radius-lg {
+    border-radius: .5rem;
+}
+.heading-card{
+    font-weight: 700!important;
+}
+.re__section .re__section-title {
+    font-family: "Nunito Bold" !important;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: normal !important;
+    color: #2c2c2c;
+    display: block;
+    margin-bottom: 4px;
+    padding: 0;
+}
+.re__pr-specs-content-item{
+    display: flex;
+    align-items: center;
+    line-height: 18px;
+    font-size: 18px;
+}
+.re__pr-specs-content-item + .re__pr-specs-content-item{
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+.re__pr-specs-content-item-icon {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 0 8px;
+}
+.re__pr-specs-content-item-icon i{
+    font-size: 20px;
+}
+.re__pr-specs-content-item-title{
+    margin: 0 8px;
+}
+.nhan{
+    font-weight: 600;
+    color: rgb(49, 45, 45);
+}

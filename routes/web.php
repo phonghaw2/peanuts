@@ -24,17 +24,15 @@ use Illuminate\Support\Facades\View;
 
 Route::get('/', action:[HomeController::class, 'index'])->name('home');
 Route::get('/office', action:[HomeController::class, 'office'])->name('office');
+Route::get('/office/{post}', action:[HomeController::class, 'show'])->name('officeshow');
 Route::get('/apartment', action:[HomeController::class, 'apartment'])->name('apartment');
+Route::get('/apartment/{post}', action:[HomeController::class, 'show'])->name('apartmentshow');
+Route::get('/postinfo', action:[HomeController::class, 'show'])->name('show');
 
 
 
 
 Route::get('/test', action:[HomeController::class, 'test'])->name('test');
-
-
-// Route::post('/test', function () {
-//     return view('test');
-// })->name('test');
 
 
 

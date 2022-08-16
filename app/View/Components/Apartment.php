@@ -6,23 +6,12 @@ use Illuminate\View\Component;
 
 class Apartment extends Component
 {
-    public string $title;
-    public string $address;
-    public string $price;
-    public string $bedroom;
-    public string $wc;
-    public string $area;
-    public string $district;
+    public object $post;
 
     public function __construct($post)
     {
-        $this->title = $post->title;
-        $this->address = $post->address;
-        $this->price = $post->price;
-        $this->bedroom = $post->bedroom;
-        $this->wc = $post->wc;
-        $this->area = $post->area;
-        $this->district = $post->district;
+        $this->post = $post;
+
 
     }
 

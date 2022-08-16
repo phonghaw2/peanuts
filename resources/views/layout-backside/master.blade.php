@@ -10,6 +10,7 @@
 
     <title>Peanuts | Admin </title>
     @stack('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" >
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap1.min.css') }}">

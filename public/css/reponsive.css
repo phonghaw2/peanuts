@@ -95,6 +95,10 @@
         flex: 0 0 auto;
         width: 25%;
     }
+    .mx-lg-10 {
+        margin-right: 12rem!important;
+        margin-left: 12rem!important;
+    }
 }
 
 
@@ -146,6 +150,9 @@
     .select-tore-title {
         font-size: 60px;
         line-height: 80px;
+    }
+    .re__section {
+        margin-bottom: 40px;
     }
 
 }
@@ -286,6 +293,7 @@
 
 
 
+
 @media screen and (min-width: 43.81em){
     .udlite-footer .links-and-language-selector {
         display: flex;
@@ -316,6 +324,7 @@
     .price-box {
       padding: 0px 10px;
     }
+
 }
 @media screen and (max-width:767px){
 

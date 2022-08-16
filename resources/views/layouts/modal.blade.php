@@ -68,7 +68,7 @@
 </div>
 
 
-@if (session('loginID') && session('loginID')['userRole'] == 1)
+@if (auth()->check() && auth()->user()->role === 1)
     @include('layouts.modalHost')
 @endif
 
@@ -90,31 +90,34 @@
                     type: "POST",
                     url: actionUrl,
                     dataType: 'json',
-                    data: {
-                        _token: "{{ csrf_token() }}";
-                        form.serialize();
-                    }, // serializes the form's elements.
-                    async: false,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
+                    data: form.serialize(),
+                    // [
+                    //         _token: "{{ csrf_token() }}",
+                    //          form.serialize(),
+                    //     ]
                     success: function(data)
                     {
+
                         Swal.fire({
                             icon: 'success',
-                            title: ' Successfully! Please login',
+                            title: ' Successfully Posted!',
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        setTimeout(() => {
+                            document.location.href = "/";
+                        }, "1700");
+
                     },
-                    error: function (data)
+                    error: function (response)
                     {
+
                         Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: response.responseJSON.message,
                         });
-                    }
+                    },
                 });
 
             });
@@ -130,7 +133,27 @@
                     url: actionUrl,
                     dataType: 'json',
                     data: form.serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
 
+                        Swal.fire({
+                            icon: 'success',
+                            title: ' Successfully Logged!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(() => {
+                            document.location.href = "/";
+                        }, "1700");
+                    },
+                    error: function (response)
+                    {
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: response.responseJSON.message,
+                        });
+                    },
 
                 });
 

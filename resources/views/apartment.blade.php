@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    @include('layouts.slide')
     @include('layouts.search')
     <div class="content-container">
         <div class="soft-by"></div>

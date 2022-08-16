@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+@include('layouts.slide')
     <div class="content-container">
         @include('layouts.search')
         <div class="content">

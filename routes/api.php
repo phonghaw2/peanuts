@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/show', [PostController::class, 'show'])->name('show');
 Route::post('/posts/slug', [PostController::class, 'generateSlug'])->name('posts.slug.generate');
 Route::get('/posts/slug', [PostController::class, 'checkSlug'])->name('posts.slug.check');

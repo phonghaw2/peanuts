@@ -7,7 +7,7 @@ use App\Http\Requests\Post\GenerateSlugRequest;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\JsonResponse;
-
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -20,14 +20,34 @@ class PostController extends Controller
 
 
     }
-    public function index(): JsonResponse
+    public function index(request $request): JsonResponse
     {
-        $data = $this->model->paginate(10);
-            // ->append([
-            //     'type_name',
-            //     'tore_name',
-            //     'status_name',
-            // ]);
+        $selectedTore = $request->get('tore');
+        $selectedType = $request->get('type');
+
+
+        $query = $this->model->clone()
+                ->latest()  ;
+
+        if (!empty($selectedTore) && $selectedTore !== '0' ) {
+            $query->where('tore', $selectedTore);
+        }
+        if (!empty($selectedType) && $selectedType !== '0') {
+            $query->where('type', $selectedType);
+        }
+        $data = $query->paginate(10)
+            ->appends([
+                'role' => $selectedTore,
+                'city' => $selectedType,
+            ]);
+
+
+        // $data = $this->model->paginate(10);
+        //     // ->append([
+        //     //     'type_name',
+        //     //     'tore_name',
+        //     //     'status_name',
+        //     // ]);
         foreach ($data as $each) {
             $each->type = $each->type_name;
             $each->tore = $each->tore_name;
@@ -41,6 +61,17 @@ class PostController extends Controller
         return $this->successResponse($arr);
 
     }
+
+    public function show(Request $request) : JsonResponse
+    {
+        $id = $request->id;
+        $post = $this->model
+                ->findOrFail($id);
+
+        return $this->successResponse($post);
+    }
+
+
     public function generateSlug(GenerateSlugRequest $request)
     {
         try {

@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+@include('layouts.slide')
     <div class="content-container">
         <div class="section-title text-center">
             <h2>Vui lòng chọn thể loại bài đăng</h2>
